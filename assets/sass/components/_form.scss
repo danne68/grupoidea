@@ -1,0 +1,31 @@
+input[type=email],
+input[type=file],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+select,
+textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: .375em;
+    border: none;
+    border: solid 1px rgba(210,215,217,.75);
+    color: inherit;
+    display: block;
+    outline: 0;
+    outline-color: initial;
+    outline-style: initial;
+    outline-width: 0px;
+    text-decoration: none;
+
+    &:focus {
+        border-color: #f56a6a;
+        box-shadow: 0 0 0 1px #f56a6a;
+        outline: 1px;
+    }
+}

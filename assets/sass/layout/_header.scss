@@ -1,0 +1,40 @@
+.headerNav {
+    min-height: 5.25rem;
+
+    > li {
+        > span,
+        > a {
+            margin-bottom: .6rem;
+            margin-top: .6rem;
+        }
+        &:hover {
+            > span,
+            > a {
+                border-bottom-width: 1px;
+                border-color: #f56a6a;
+            }
+            ul {
+                display: block;
+            }
+        }
+        > ul {
+            position: absolute;
+            background-color: #3d4449;
+            z-index: 20;
+            padding: .5rem 0 .5rem 0rem;
+            top: 1rem;
+            margin-top: 1.5rem;
+            color: #fff;
+            width: 180%;
+
+            > li {
+                padding-bottom: .5rem;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #f56a6a;
+                }
+            }
+        }
+    }
+}

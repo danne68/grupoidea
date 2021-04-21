@@ -1,0 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700');
+// Layout
+@import 'layout/header';
+@import 'layout/main';
+// Component.
+@import 'components/buttons';
+@import 'components/vistas';
+@import 'components/spinner';
+@import 'components/slider';
+@import 'components/modal';
+@import 'components/form';
+@import 'components/overlay';
+@import 'components/body-block';
