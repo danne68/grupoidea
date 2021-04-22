@@ -34,7 +34,7 @@
 	<div class="result container mx-auto py-8 px-2">
 		<div class="flex">
 			<h2 class="text-2xl font-normal">Promociones</h2>
-			<div class="w-full flex justify-center">
+			<div class="w-full flex justify-end">
 				<div class="relative cursor-pointer">
 					<i class="absolute text-white fa fa-plus top-3 left-2"></i>
 					<input type="button" id="addPromos" data-nombre-modal="PromosModal" value="Agregar Nuevo" class="ModalEvent cursor-pointer bg-grupo-red hover:bg-red-400 text-white py-2 pr-4 pl-8 rounded" />
@@ -44,33 +44,41 @@
 		<div id="fotos">
 			<?php if (sizeof($promos) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($promos) ?>)</span></div>
-				<div class="flex border-b border-grupo-red px-2 py-2 font-normal">
+				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
 					<div class="w-1/4">promociones</div>
-					<div class="flex-auto">Foto</div>
+					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach ($promos as $prom) { ?>
 					<div class="product-item p-2">
-						<div class="showItem flex items-center">
-							<div class="w-1/4 pr-2"><?php echo $prom["descripcion"]; ?></div>
-							<div class="flex-auto"><?php echo $prom["foto"]; ?></div>
-							<div class="relative text-grupo-red">
+						<div class="showItem flex flex-col md:flex-row items-center">
+							<div class="w-full flex md:w-1/4 pr-2">
+								<div class="md:hidden font-normal mr-4">Promociones</div>
+								<?php echo $prom["descripcion"]; ?>
+							</div>
+							<div class="w-full flex md:flex-auto mb-4 md:mb-0">
+								<div class="md:hidden font-normal mr-4">Foto</div>
+								<?php echo $prom["foto"]; ?>
+							</div>
+							<div class="w-full md:w-auto relative text-grupo-red">
 								<i class="absolute fa fa-pencil top-2 left-2"></i>
-								<input type="button" value="Editar" class="button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
+								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
 						<div class="hidden hideItem">
-							<form class="flex" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
+							<form class="flex flex-col md:flex-row" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
 								<input type="hidden" name="id" value="<?php echo $prom['id_promocion']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $prom['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprom">
-								<div class="w-1/4 pr-2">
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Promociones</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prom['descripcion']; ?>">
 								</div>
-								<div class="flex items-center">
+								<div class="flex items-center mb-4 md:mb-0">
+									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
-								<div class="flex flex-auto items-center justify-end">
+								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
 										<i class="absolute fa fa-trash-o top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />

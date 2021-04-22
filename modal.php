@@ -121,7 +121,7 @@ $( document ).ready(function() {
 				categoria: { required:true },
 				nombre: { required:true, minlength: 2},
 				descripcion: { required:true, minlength: 2},
-				image: { required:true, accept: "image/*"}
+				image: { required:true, accept: "image/*, video/*"}
 			},
 			messages: {
 				categoria: "Debe seleccionar una categoría",
@@ -158,9 +158,9 @@ $( document ).ready(function() {
 							$("#ok").show();
 							$('#subir').removeClass("disabled");
 							$('#subir').val("subir");
-							//console.log(data);
+							console.log(data);
 							//console.log(textStatus);
-							//console.log(jqXHR);
+							console.log(jqXHR);
 						}
 						else {
 							$('#ok').html(data);
@@ -168,9 +168,10 @@ $( document ).ready(function() {
 							$('#'+id)[0].reset();
 							$('#subir').removeClass("disabled");
 							$('#subir').val("subir");
-							$('#fotos').load("uploader.php?action="+action);	
+							$('#fotos').load("uploader.php?action="+action);
+							console.log(data);
 							//console.log(textStatus);
-							//console.log(jqXHR);
+							console.log(jqXHR);
 						}
 					}
 				});

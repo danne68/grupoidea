@@ -1,6 +1,6 @@
 <?php
-	$nombre	=	$_POST['name'];
-	$email	=	$_POST['email'];
+	$nombre		=	$_POST['name'];
+	$email		=	$_POST['email'];
 	$mensaje	=	$_POST['message'];
 	
 	// Definir el correo de destino:

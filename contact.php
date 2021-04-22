@@ -1,6 +1,6 @@
 <?php 
-    session_start();
-    ini_set("display_errors", true);
+session_start();
+ini_set("display_errors", true);
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -21,22 +21,21 @@
 <body class="font-sans font-thin bg-gray-100">
     <?php include 'header.php'; ?>
     <div class="min-h-screen">
-        <section style="min-height: 16rem;" class="relative">
-            <img class="w-full" src="images/contact.jpg" />
+        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(images/contact.jpg)">
             <span class="text-center w-full uppercase absolute text-white text-4xl px-2" style="top: 7rem;text-shadow: 0px 0px 13px black;">Contactenos</span>
         </section>
         <div class="container mx-auto py-8 px-2">
             <section>
                 <h2 class="uppercase mb-4 text-lg"><strong>Queremos Conocerte</strong></h2>
-                <span class="flex mb-2 text-grupo-gray">Si deseas solicitar información sobre nuestros productos y servicios, por favor envíenos un correo con sus datos y uno de nuestros vendedores se contactara lo mas rápido posible para atenderle.</span>
-                <div class="flex">
+                <span class="flex mb-8 text-grupo-gray">Si deseas solicitar información sobre nuestros productos y servicios, por favor envíenos un correo con sus datos y uno de nuestros vendedores se contactara lo mas rápido posible para atenderle.</span>
+                <div class="flex flex-col-reverse md:flex-row">
                     <div class="w-full md:w-1/2 md:pr-4">
                         <form id="envio" method="POST">
                             <div class="flex flex-wrap">
-                                <div class="w-full md:w-1/2 pr-1">
+                                <div class="w-full md:w-1/2 md:pr-1">
                                     <input class="py-2 px-2 w-full border rounded" type="text" placeholder="Nombre" id="name" name="name" />
                                 </div>
-                                <div class="w-full md:w-1/2 pl-1">
+                                <div class="w-full mt-4 md:mt-0 md:w-1/2 md:pl-1">
                                     <input class="py-2 px-2 w-full border rounded" type="email" placeholder="Email" id="email" name="email" />
                                 </div>
                                 <div class="w-full mt-4">
@@ -53,7 +52,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="w-full md:w-1/2">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0">
                         <a target="blank" href="//www.google.com.mx/maps/place/Idea+Gafetes+y+Letreros/@21.1678751,-86.840994,17z/data=!4m2!3m1!1s0x8f4c2c0cdcb2a2af:0xbf7e10b2925043cf?hl=es">
                             <img class="w-full" src="images/location.png" alt="Gafetes y letreros idea">
                         </a>

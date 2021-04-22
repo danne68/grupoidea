@@ -7,33 +7,41 @@
 			$promos = select_to("promociones","id_promocion,descripcion,foto");
 			if (sizeof($promos) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($promos) ?>)</span></div>
-				<div class="flex border-b border-grupo-red px-2 py-2 font-normal">
+				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
 					<div class="w-1/4">promociones</div>
-					<div class="flex-auto">Foto</div>
+					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach ($promos as $prom) { ?>
 					<div class="product-item p-2">
-						<div class="showItem flex items-center">
-							<div class="w-1/4 pr-2"><?php echo $prom["descripcion"]; ?></div>
-							<div class="flex-auto"><?php echo $prom["foto"]; ?></div>
-							<div class="relative text-grupo-red">
+						<div class="showItem flex flex-col md:flex-row items-center">
+							<div class="w-full md:w-1/4 flex md:w-1/4 pr-2">
+								<div class="md:hidden font-normal mr-4">Promociones</div>
+								<?php echo $prom["descripcion"]; ?>
+							</div>
+							<div class="w-full flex md:flex-auto mb-4 md:mb-0">
+								<div class="md:hidden font-normal mr-4">Foto</div>
+								<?php echo $prom["foto"]; ?>
+							</div>
+							<div class="w-full md:w-auto relative text-grupo-red">
 								<i class="absolute fa fa-pencil top-2 left-2"></i>
-								<input type="button" value="Editar" class="button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
+								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
 						<div class="hidden hideItem">
-							<form class="flex" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
+							<form class="flex flex-col md:flex-row" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
 								<input type="hidden" name="id" value="<?php echo $prom['id_promocion']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $prom['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprom">
-								<div class="w-1/4 pr-2">
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Promociones</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prom['descripcion']; ?>">
 								</div>
-								<div class="flex items-center">
+								<div class="flex items-center mb-4 md:mb-0">
+									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
-								<div class="flex flex-auto items-center justify-end">
+								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
 										<i class="absolute fa fa-trash-o top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
@@ -60,34 +68,45 @@
 			$products = select_to("productos","*");
 			if (sizeof($products) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($products) ?>)</span></div>
-				<div class="flex border-b border-grupo-red px-2 py-2 font-normal">
+				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
 					<div class="w-1/6">Categoría</div>
 					<div class="w-1/5">Nombre</div>
 					<div class="w-1/6">Descripcion</div>
-					<div class="flex-auto">Foto</div>
+					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach ($products as $prod) { ?>
 					<div class="product-item p-2">
-						<div class="showItem flex items-center">
-							<div class="w-1/6 pr-2">
+						<div class="showItem flex flex-col md:flex-row items-center">
+							<div class="w-full flex md:w-1/6 pr-2">
+								<div class="md:hidden font-normal mr-4">Categoría</div>
 								<?php $categories = select_to_where("categoria","categoria",array("id"=>$prod['categoria'])); ?>
 								<?php foreach($categories as $cat) { echo $cat['categoria']; } ?>
 							</div>
-							<div class="w-1/5 pr-2"><?php echo $prod["nombre"]; ?></div>
-							<div class="w-1/6 pr-2"><?php echo substr($prod["descripcion"],0,40); ?>...</div>
-							<div class="flex-auto"><?php echo $prod["foto"]; ?></div>
-							<div class="relative text-grupo-red">
+							<div class="w-full flex md:w-1/5 pr-2">
+								<div class="md:hidden font-normal mr-4">Nombre</div>
+								<?php echo $prod["nombre"]; ?>
+							</div>
+							<div class="w-full flex md:w-1/6 pr-2">
+								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<?php echo substr($prod["descripcion"],0,40); ?>...
+							</div>
+							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
+								<div class="md:hidden font-normal mr-4">Foto</div>
+								<?php echo $prod["foto"]; ?>
+							</div>
+							<div class="w-full md:w-auto relative text-grupo-red">
 								<i class="absolute fa fa-pencil top-2 left-2"></i>
-								<input type="button" value="Editar" class="button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
+								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
 						<div class="hidden hideItem">
-							<form class="flex" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
+							<form class="flex flex-col md:flex-row" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
 								<input type="hidden" name="id" value="<?php echo $prod['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $prod['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprod">
-								<div class="w-1/5 pr-2 relative">
+								<div class="w-full md:w-1/5 pr-2 flex relative">
+									<div class="md:hidden font-normal mr-4 self-center">Categoría</div>
 									<i class="absolute fa fa-chevron-down top-3 right-3"></i>
 									<select class="py-2 pl-2 pr-5 w-full border rounded" name="categoria">
 										<?php $categories = select_to("categoria","id,categoria"); ?>
@@ -98,16 +117,19 @@
 										<?php } ?>
 									</select>
 								</div>
-								<div class="w-1/5 pr-2 flex">
+								<div class="w-full md:w-1/5 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
 									<input type="text" name="nombre" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['nombre']; ?>">
 								</div>
-								<div class="w-1/5 pr-2 flex">
+								<div class="w-full md:w-1/5 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['descripcion']; ?>">
 								</div>
-								<div class="flex pr-2 items-center">
+								<div class="flex pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
-								<div class="flex flex-auto items-center justify-end">
+								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
 										<i class="absolute fa fa-trash-o top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
@@ -134,38 +156,50 @@
 			$categories = select_to("categoria","id,categoria,descripcion,foto");
 			if (sizeof($categories) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($categories) ?>)</span></div>
-				<div class="flex border-b border-grupo-red px-2 py-2 font-normal">
+				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
 					<div class="w-1/4">Nombre</div>
 					<div class="w-1/4">Descripcion</div>
-					<div class="flex-auto">Foto</div>
+					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach($categories as $cat) { ?>
 					<div class="product-item p-2">
-						<div class="showItem flex items-center">
-							<div class="w-1/4 pr-2"><?php echo $cat["categoria"]; ?></div>
-							<div class="w-1/4 pr-2"><?php echo substr($cat["descripcion"],0,40); ?>...</div>
-							<div class="flex-auto"><?php echo $cat["foto"]; ?></div>
-							<div class="relative text-grupo-red">
+						<div class="showItem flex flex-col md:flex-row items-center">
+							<div class="w-full flex md:w-1/4 pr-2">
+								<div class="md:hidden font-normal mr-4">Nombre</div>
+								<?php echo $cat["categoria"]; ?>
+							</div>
+							<div class="w-full flex md:w-1/4 pr-2">
+								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<?php echo substr($cat["descripcion"],0,40); ?>...
+							</div>
+							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
+								<div class="md:hidden font-normal mr-4">Foto</div>
+								<?php echo $cat["foto"]; ?>
+							</div>
+							<div class="w-full md:w-auto relative text-grupo-red">
 								<i class="absolute fa fa-pencil top-2 left-2"></i>
-								<input type="button" value="Editar" class="button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
+								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
 						<div class="hidden hideItem">
-							<form class="flex" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
+							<form class="flex flex-col md:flex-row" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
 								<input type="hidden" name="id" value="<?php echo $cat['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $cat['foto']; ?>">
 								<input type="hidden" name="opcion" value="opcat">
-								<div class="w-1/4 pr-2">
+								<div class="w-full md:w-1/4 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
 									<input type="text" name="categoria" class="py-2 px-2 w-full border rounded" value="<?php echo $cat['categoria']; ?>">
 								</div>
-								<div class="w-1/4 pr-2 flex">
+								<div class="w-full md:w-1/4 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
 									<textarea name="descripcion" class="py-2 px-2 w-full border rounded" rows='1'><?php echo $cat['descripcion']; ?></textarea>
 								</div>
-								<div class="flex pr-2 items-center">
+								<div class="flex pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
-								<div class="flex flex-auto items-center justify-end">
+								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
 										<i class="absolute fa fa-trash-o top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
@@ -222,8 +256,12 @@
 			$destino =	dirname(__FILE__).'/images/promociones/'.$name;
 			break;
 		}
-		$types = array("image/jpg","image/jpeg","image/gif","image/png"); // archivos extension jpeg,gif,png
-		$limite_kb = 5120;
+		$types = array("video/mp4","image/jpg","image/jpeg","image/gif","image/png"); // archivos extension
+		if ($type == "video/mp4" ){
+			$limite_kb = $size;
+		} else {
+			$limite_kb = 5120;
+		}
 
 		/***********************************COMPROBAMOS SI HA OCURRIDO UN ERROR*******************************************************/
 		if ($error > 0) {
@@ -262,13 +300,14 @@
 							$ancho = $info_imagen[0];
 							$alto = $info_imagen[1];
 							$imagen_tipo = $info_imagen['mime'];
+							echo "subido exitosamente";
 						}
 					} else {
 						echo $name . ", este archivo existe";
 					}
 				}
 			} else {
-				echo "archivo no permitido(solo jpg,jpeg,gif y png) o excede el tamano de $limite_kb Kilobytes";
+				echo "archivo no permitido(solo jpg, jpeg, gif, png y mp4) o excede el tamano de $limite_kb Kilobytes";
 			}
 		}
 	}

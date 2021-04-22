@@ -34,7 +34,7 @@
 	<div class="result container mx-auto py-8 px-2">
 		<div class="flex">
 			<h2 class="text-2xl font-normal">Productos</h2>
-			<div class="w-full flex justify-center">
+			<div class="w-full flex justify-end">
 				<div class="relative cursor-pointer">
 					<i class="absolute text-white fa fa-plus top-3 left-2"></i>
 					<input type="button" id="addProducts" data-nombre-modal="ProductsModal" value="Agregar Nuevo" class="ModalEvent cursor-pointer bg-grupo-red hover:bg-red-400 text-white py-2 pr-4 pl-8 rounded" />
@@ -44,34 +44,45 @@
 		<div id="fotos">
 			<?php if (sizeof($products) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($products) ?>)</span></div>
-				<div class="flex border-b border-grupo-red px-2 py-2 font-normal">
+				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
 					<div class="w-1/6">Categoría</div>
 					<div class="w-1/5">Nombre</div>
 					<div class="w-1/6">Descripcion</div>
-					<div class="flex-auto">Foto</div>
+					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach ($products as $prod) { ?>
 					<div class="product-item p-2">
-						<div class="showItem flex items-center">
-							<div class="w-1/6 pr-2">
+						<div class="showItem flex flex-col md:flex-row items-center">
+							<div class="w-full flex md:w-1/6 pr-2">
+								<div class="md:hidden font-normal mr-4">Categoría</div>
 								<?php $categories = select_to_where("categoria","categoria",array("id"=>$prod['categoria'])); ?>
 								<?php foreach($categories as $cat) { echo $cat['categoria']; } ?>
 							</div>
-							<div class="w-1/5 pr-2"><?php echo $prod["nombre"]; ?></div>
-							<div class="w-1/6 pr-2"><?php echo substr($prod["descripcion"],0,40); ?>...</div>
-							<div class="flex-auto"><?php echo $prod["foto"]; ?></div>
-							<div class="relative text-grupo-red">
+							<div class="w-full flex md:w-1/5 pr-2">
+								<div class="md:hidden font-normal mr-4">Nombre</div>
+								<?php echo $prod["nombre"]; ?>
+							</div>
+							<div class="w-full flex md:w-1/6 pr-2">
+								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<?php echo substr($prod["descripcion"],0,40); ?>...
+							</div>
+							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
+								<div class="md:hidden font-normal mr-4">Foto</div>
+								<?php echo $prod["foto"]; ?>
+							</div>
+							<div class="w-full md:w-auto relative text-grupo-red">
 								<i class="absolute fa fa-pencil top-2 left-2"></i>
-								<input type="button" value="Editar" class="button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
+								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
 						<div class="hidden hideItem">
-							<form class="flex" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
+							<form class="flex flex-col md:flex-row" id="multiform<?php echo $contador; ?>" enctype="multipart/form-data" method="POST">
 								<input type="hidden" name="id" value="<?php echo $prod['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $prod['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprod">
-								<div class="w-1/5 pr-2 relative">
+								<div class="w-full md:w-1/5 pr-2 flex relative">
+									<div class="md:hidden font-normal mr-4 self-center">Categoría</div>
 									<i class="absolute fa fa-chevron-down top-3 right-3"></i>
 									<select class="py-2 pl-2 pr-5 w-full border rounded" name="categoria">
 										<?php $categories = select_to("categoria","id,categoria"); ?>
@@ -82,16 +93,19 @@
 										<?php } ?>
 									</select>
 								</div>
-								<div class="w-1/5 pr-2 flex">
+								<div class="w-full md:w-1/5 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
 									<input type="text" name="nombre" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['nombre']; ?>">
 								</div>
-								<div class="w-1/5 pr-2 flex">
+								<div class="w-full md:w-1/5 pr-2 flex">
+									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['descripcion']; ?>">
 								</div>
-								<div class="flex pr-2 items-center">
+								<div class="flex pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
-								<div class="flex flex-auto items-center justify-end">
+								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
 										<i class="absolute fa fa-trash-o top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />

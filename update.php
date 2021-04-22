@@ -60,14 +60,18 @@
 		$option = $_POST["opcion"];
 
 		//archivo para la foto
-		$Image_name		=	$_FILES['image']['name'] = str_replace(" ", "", $_FILES['image']['name']); //quitar espaciados en el nombre de la imagen
-		//$Image_name		=	$_FILES['image']['name']; //este es el nombre del archivo que acabas de subir
-		$type			=	$_FILES['image']['type']; //este es el tipo de archivo que acabas de subir
-		$temporal		=	$_FILES['image']['tmp_name'];//este es donde esta almacenado el archivo que acabas de subir.
-		$size			=	$_FILES['image']['size']; //este es el tamaño en bytes que tiene el archivo que acabas de subir.
-		$error			=	$_FILES['image']['error']; //este almacena el codigo de error que resultaría en la subida.
-		$types			=	array("image/jpg","image/jpeg","image/gif","image/png"); // archivos extension jpeg,gif,png
-		$limite_kb		=	5120;
+		$Image_name = $_FILES['image']['name'] = str_replace(" ", "", $_FILES['image']['name']); //quitar espaciados en el nombre de la imagen
+		//$Image_name = $_FILES['image']['name']; //este es el nombre del archivo que acabas de subir
+		$type = $_FILES['image']['type']; //este es el tipo de archivo que acabas de subir
+		$temporal = $_FILES['image']['tmp_name'];//este es donde esta almacenado el archivo que acabas de subir.
+		$size = $_FILES['image']['size']; //este es el tamaño en bytes que tiene el archivo que acabas de subir.
+		$error = $_FILES['image']['error']; //este almacena el codigo de error que resultaría en la subida.
+		$types = array("video/mp4", "image/jpg","image/jpeg","image/gif","image/png"); // archivos extension jpeg,gif,png
+		if ($type == "video/mp4" ){
+			$limite_kb = $size;
+		} else {
+			$limite_kb = 5120;
+		}
 
 		switch ($option) {
 			case "opprod":
@@ -117,7 +121,7 @@
 					}
 				}
 			} else {
-				echo "archivo no permitido(solo jpg,jpeg,gif y png) o excede el tamano de $limite_kb Kilobytes";
+				echo "archivo no permitido(solo jpg, jpeg, gif, png y mp4) o excede el tamano de $limite_kb Kilobytes";
 			}
 		} else {
 			if ($consulta == 1) {

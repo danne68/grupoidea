@@ -42,4 +42,17 @@ function select_to($tbl,$campos){
 	mysql_close();
 }
 
+function select_to_order($tbl,$campos,$order){
+	$data= array();
+	$con = Db::connect();
+	$query = $con->query("SELECT $campos FROM $tbl ORDER BY $order");
+	if($query->num_rows>0){
+		while ($r=$query->fetch_array()) {
+			$data[]=$r;
+		}
+	}
+	return $data;
+	mysql_close();
+}
+
 ?>

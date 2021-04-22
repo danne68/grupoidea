@@ -43,12 +43,12 @@ ini_set("display_errors", true);
                     </section>
                 <?php } ?>
                 <section>
-                    <div class="flex">
-                        <div class="w-1/2 pr-2">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/2 md:pr-2 mb-8 md:mb-0">
                             <h2 class="mb-2 uppercase">Quiénes somos</h2>
                             <p>Somos una empresa dedicada al servicio, compromiso y calidad desde su fundación en 1995 por lo mismo nuestro principal objetivo es seguir siendo de su preferencia.</p>
                         </div>
-                        <div class="w-1/2 pl-2">
+                        <div class="w-full md:w-1/2 md:pl-2">
                             <h2 class="mb-2 uppercase">CONTROL DE CALIDAD</h2>
                             <p class="mb-2">Nuestro principal objetivo es la satisfacción de nuestros clientes, todo ello garantizando la máxima calidad de nuestros servicios y productos.</p>
                             <p>Para alcanzar éste reconocimiento, es con el gran esfuerzo que supone llevamos a cabo un procedimiento de control de calidad, que garantiza toda un seguridad y trazabilidad dentro de la logística de nuestra empresa.</p>

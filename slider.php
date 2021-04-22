@@ -1,5 +1,5 @@
 <?php
-    $result = select_to("promociones","descripcion,foto");
+    $result = select_to_order("promociones","descripcion,foto","id_promocion");
 ?>
 <ul id="slider">
     <?php if ( sizeof($result) == 0) { ?>
@@ -9,9 +9,19 @@
     }
     else {
         foreach($result as $slider) {
-        ?>
-            <li><img src="images/promociones/<?php echo $slider['foto']; ?>" alt="<?php echo $slider["descripcion"]; ?>" /></li>
-        <?php
+            if (!preg_match('/\mp4\b/', $slider['foto'])) {
+            ?>
+                <li>
+                    <img src="images/promociones/<?php echo $slider['foto']; ?>" alt="<?php echo $slider["descripcion"]; ?>" />
+                </li>
+            <?php } else { ?>
+                <li id="videoFrame">
+                    <video class="mx-auto" id="autoplay" muted playsinline controls>
+                        <source src="images/promociones/<?php echo $slider['foto']; ?>" type="video/mp4">
+                    </video>
+                </li>
+            <?php
+            }
         }
     }
     ?>
@@ -26,6 +36,18 @@
             // auto: true,
             // preload: 'visible',
             // autoHover: false
+        });
+        document.querySelector(".sy-list").addEventListener("transitionend", videoP);
+        function videoP(){
+            document.getElementById('autoplay').currentTime = 0;
+            setTimeout('', 400);
+            if(document.querySelector('#videoFrame.sy-active')){
+                demo1.stopAuto();
+                document.getElementById('autoplay').play();
+            }
+        }
+        $("#autoplay").on('ended', function(){
+            demo1.startAuto();
         });
     });
 </script>

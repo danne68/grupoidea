@@ -88,6 +88,15 @@
     position: relative;
     height: 100%;
     width: 100%;
+    @media only screen and (min-width: 600px) {
+        min-height: 16rem;
+    }
+    @media only screen and (min-width: 800px) {
+        min-height: 20rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        min-height: 25rem;
+    }
 }
 
 .sy-slides-wrap:hover .sy-controls {
@@ -276,7 +285,7 @@
 
 .sy-controls li a i {
     top: 40%;
-    left: 7px;
+    left: 19px;
     position: relative;
     z-index: 12;
     font-size: 35px;
@@ -299,16 +308,13 @@
 @media only screen and (min-width: 1600px) {
     .sy-controls li a i {
         top: 47%;
-        left: 53px;
+        left: 52px;
     }
 }
 
 @media only screen and (max-device-width: 600px) {
     .sy-controls {
         display: block;
-    }
-    .sy-controls li {
-        min-width: 2.1em;
     }
 }
 
