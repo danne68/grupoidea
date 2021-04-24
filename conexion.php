@@ -5,6 +5,7 @@ if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
 }
 
 //server
+/*
 Class Db {
     public static function connect() {
         $host = "174.136.25.70"; // nombre del anfitrion
@@ -18,15 +19,15 @@ Class Db {
         return $conn;
     }
 }
+*/
 
 //local
-/*
 Class Db {
     public static function connect() {
-        $host		=	"mysql"; // nombre del anfitrion
-        $username	=	"user"; // Mysql nombre del usuario
-        $password	=	"user"; // Mysql contrasenia
-        $db_name	=	"default_schema"; // nombre de la base de datos
+        $host = "db"; // nombre del anfitrion
+        $username =	"root"; // Mysql nombre del usuario
+        $password =	"example"; // Mysql contrasenia
+        $db_name =	"grupoidea"; // nombre de la base de datos
         $conn = new mysqli($host,$username,$password,$db_name);
         if($conn->connect_error){
             die("Conexion fallida: " . $conn->connect_error);
@@ -34,6 +35,5 @@ Class Db {
         return $conn;
     }
 }
-*/
 
 ?>
