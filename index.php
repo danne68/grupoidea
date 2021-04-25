@@ -6,18 +6,8 @@ ini_set("display_errors", true);
 <html lang="es">
 
 <head>
-    <title>Grupo Idea - Home</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta property="og:title" content="Grupo Idea Cancun" />
-    <meta property="og:image" content="" />
-    <link rel="shortcut icon" href="">
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.0/tailwind.min.css" crossorigin="anonymous">
-    <script src="assets/js/jquery.min.js"></script>
+  <title>Grupo Idea - Home</title>
+  <?php include 'metas.php'; ?>
 </head>
 <body class="font-sans font-thin bg-gray-100">
     <?php
@@ -42,19 +32,6 @@ ini_set("display_errors", true);
                         </div>
                     </section>
                 <?php } ?>
-                <section>
-                    <div class="flex flex-col md:flex-row">
-                        <div class="w-full md:w-1/2 md:pr-2 mb-8 md:mb-0">
-                            <h2 class="mb-2 uppercase">Quiénes somos</h2>
-                            <p>Somos una empresa dedicada al servicio, compromiso y calidad desde su fundación en 1995 por lo mismo nuestro principal objetivo es seguir siendo de su preferencia.</p>
-                        </div>
-                        <div class="w-full md:w-1/2 md:pl-2">
-                            <h2 class="mb-2 uppercase">CONTROL DE CALIDAD</h2>
-                            <p class="mb-2">Nuestro principal objetivo es la satisfacción de nuestros clientes, todo ello garantizando la máxima calidad de nuestros servicios y productos.</p>
-                            <p>Para alcanzar éste reconocimiento, es con el gran esfuerzo que supone llevamos a cabo un procedimiento de control de calidad, que garantiza toda un seguridad y trazabilidad dentro de la logística de nuestra empresa.</p>
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
         <?php include 'footer.php'; ?>

@@ -6,16 +6,8 @@ ini_set("display_errors", true);
 <html lang="es">
 
 <head>
-    <title>Grupo Idea - Productos</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="">
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.0/tailwind.min.css" crossorigin="anonymous">
-    <script src="assets/js/jquery.min.js"></script>
+  <title>Grupo Idea - Productos</title>
+  <?php include 'metas.php'; ?>
 </head>
 <body class="font-sans font-thin bg-gray-100">
     <?php

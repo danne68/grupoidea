@@ -1,5 +1,6 @@
 <?php
 	$nombre		=	$_POST['name'];
+  $phone		=	$_POST['phone'];
 	$email		=	$_POST['email'];
 	$mensaje	=	$_POST['message'];
 	
@@ -23,7 +24,7 @@
 	// Aqui definimos el asunto y armamos el cuerpo del mensaje
 	$asunto = 'Grupo Idea Cancun - Mensaje de contacto';
 	
-    $cuerpo .= "<div style='border-bottom: solid 5px #f56a6a;padding: 1em 0 1em 0;position: relative;'>";
+  $cuerpo .= "<div style='border-bottom: solid 5px #f56a6a;padding: 1em 0 1em 0;position: relative;'>";
 	$cuerpo .= 	"<img style='width:130px;' src='http://grupoideacancun.com/images/logo.png'>";
 	$cuerpo .= "</div>";
 	$cuerpo .= "<div style='display: block;border-top: 0 !important;padding: 0 4em 0.1em 4em;margin: 0 auto;max-width: 110em;font-size: 10pt;color: #7f888f;font-family: &quot;Open Sans&quot;, sans-serif;font-weight: 400;line-height: 1.65;'>";
@@ -33,6 +34,10 @@
 	$cuerpo .= 			"<dt style='display: block;font-weight: 600;margin: 0 0 1em 0;'>Nombre</dt>";
 	$cuerpo .= 			"<dd style='margin-left: 2em;'>";
 	$cuerpo .= 				"<p style='margin: 0 0 2em 0;'>$nombre</p>";
+	$cuerpo .= 			"</dd>";
+  $cuerpo .= 			"<dt style='display: block;font-weight: 600;margin: 0 0 1em 0;'>Teléfono</dt>";
+  $cuerpo .= 			"<dd style='margin-left: 2em;'>";
+	$cuerpo .= 				"<p style='margin: 0 0 2em 0;'>$phone</p>";
 	$cuerpo .= 			"</dd>";
 	$cuerpo .= 			"<dt style='display: block;font-weight: 600;margin: 0 0 1em 0;'>Correo</dt>";
 	$cuerpo .= 			"<dd style='margin-left: 2em;'>";
