@@ -1,38 +1,57 @@
 .headerNav {
-    min-height: 5.25rem;
+  min-height: 5.25rem;
 
-    > li {
-        > span,
-        > a {
-            margin-bottom: .6rem;
-            margin-top: .6rem;
-        }
-        &:hover {
-            > span,
-            > a {
-                border-bottom-width: 1px;
-                border-color: #f56a6a;
-            }
-            ul {
-                display: block;
-            }
-        }
-        > ul {
-            position: absolute;
-            background-color: #3d4449;
-            z-index: 20;
-            padding: .5rem 0 .5rem 0rem;
-            margin-top: 1.5rem;
-            color: #fff;
-
-            > li {
-                padding-bottom: .5rem;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: #f56a6a;
-                }
-            }
-        }
+  > li {
+    > span,
+    > a {
+      margin-bottom: .6rem;
+      margin-top: .6rem;
     }
+    &:hover {
+      > span,
+      > a {
+        border-bottom-width: 1px;
+        border-color: #f56a6a;
+      }
+      ul {
+        display: block;
+      }
+    }
+    > ul {
+      position: absolute;
+      background-color: #3d4449;
+      z-index: 20;
+      padding: .5rem 0 .5rem 0rem;
+      margin-top: 1.5rem;
+      color: #fff;
+
+      > li {
+        padding-bottom: .5rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f56a6a;
+        }
+      }
+    }
+  }
+}
+#menuMob {
+  width: 0;
+  background: #303131;
+  color: white;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: 20;
+  font-size: 1.25rem;
+  transition: 0.5s;
+
+  #menuWrapper {
+    display: none;
+    transition: 2.5s;
+  }
+  li {
+    cursor: pointer;
+  }
 }
