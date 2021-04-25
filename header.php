@@ -39,10 +39,10 @@
     <!--<li class="pl-2"><a href="#" class="fab fa-youtube fa-lg hover:text-red-600"></a></li>-->
   </ul>
 </header>
-<div id="menuMob">
-  <div id="menuWrapper" class="px-4 py-2">
-    <div id="menuMobClose" class="text-right"><i class="fa fa-times fa-2x"></i></div>
-    <ul class="pt-4">
+<div id="menuMob" class="relative">
+  <div id="menuWrapper" class="px-4 py-2 mt-16 w-full h-full overflow-y-scroll">
+    <div id="menuMobClose" class="absolute top-4 right-4"><i class="fa fa-times fa-2x"></i></div>
+    <ul class="overflow-y-scroll mb-16">
       <li class="py-2 uppercase"><a href="./" class="flex">Inicio</a></li>
       <li class="py-2 uppercase"><a href="/somos.php" class="flex">¿Quiénes Somos?</a></li>
       <li class="py-2 uppercase">
