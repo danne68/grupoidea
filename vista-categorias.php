@@ -4,7 +4,7 @@
 	
 	if(!isset($_SESSION['s_user']))
 	{
-	   // Usuario que no se ha logueado
+	  // Usuario que no se ha logueado
 		echo "No tienes permiso para entrar a esta pagina";
 		echo ("<script type='text/javascript'>
 		setTimeout(function () {
