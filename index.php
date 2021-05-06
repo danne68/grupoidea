@@ -1,10 +1,9 @@
 <?php 
-session_start();
-ini_set("display_errors", true);
+  session_start();
+  ini_set("display_errors", true);
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
-
 <head>
   <title>Grupo Idea - Home</title>
   <?php include 'metas.php'; ?>

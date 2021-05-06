@@ -1,5 +1,5 @@
 <div class="modal">
-    <h2 class="text-lg"><strong>Entrar</strong></h2>
+  <h2 class="text-lg"><strong>Entrar</strong></h2>
 	<div class="modal-content pt-6 pb-8 px-4 bg-white">
 		<form id="login" method="POST">
 			<div class="flex flex-col text-grupo-gray">
@@ -33,7 +33,7 @@
 		$("#overlay").show();
 		$("#login").validate({
 			rules: {
-                user: { required:true, email: true},
+        user: { required:true, email: true},
 				pass: { required:true, minlength: 2}
 			},
 			messages: {
@@ -56,6 +56,7 @@
 					{
 						if(data == 'true') {
 							window.location="vista-promo.php";
+             
 						}
 						else {
 							if (data == 'usuario') {
