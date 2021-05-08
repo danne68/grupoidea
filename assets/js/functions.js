@@ -16,10 +16,11 @@ function getResult(result, where) {
 }
 
 function showModal(dataForm) {
+    var domain = window.location.origin;
     $.ajax({
         async: true,
         type: "POST",
-        url: "modal.php?action=" + dataForm.action,
+        url: domain+"/modal.php?action=" + dataForm.action,
         data: dataForm,
         complete: function(data) {
             $('#Modal').html(data.responseText);

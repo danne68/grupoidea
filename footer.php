@@ -24,10 +24,10 @@
     <div class="flex flex-col w-full md:w-1/4 font-thin text-xs text-grupo-gray flex-wrap">
       <span class="border-b border-gray-800 mb-2 pb-2 md:pb-0">Calidad que nos respalda</span>
       <div class="justify-center flex flex-wrap">
-        <img class="h-6 px-2 mb-2" src="images/roland.png">    
-        <img class="h-6 px-2 mb-2" src="images/gravograph.png">
-        <img class="h-6 px-2 mb-2" src="images/graphtec.png">
-        <img class="h-6 px-2 mb-2" src="images/sideco.png">
+        <img class="h-6 px-2 mb-2" src="<?php echo $domain;?>images/roland.png">    
+        <img class="h-6 px-2 mb-2" src="<?php echo $domain;?>images/gravograph.png">
+        <img class="h-6 px-2 mb-2" src="<?php echo $domain;?>images/graphtec.png">
+        <img class="h-6 px-2 mb-2" src="<?php echo $domain;?>images/sideco.png">
       </div>
     </div>
   </div>

@@ -12,12 +12,13 @@
       require_once("password.php");
     }
 	}
+  
 ?>
 <header class="container mx-auto py-4 px-2 md:px-4 flex">
   <div id="buttonMob" class="flex md:hidden items-center px-2 border mr-4"><i class="fa fa-bars fa-lg"></i></div>
-  <a href="index.php" class="w-1/4 md:w-auto items-center flex"><img class="w-full max-w-40" src="images/logo.png"></a>
+  <a href="<?php echo $domain;?>" class="w-1/4 md:w-auto items-center flex"><img class="w-full max-w-40" src="<?php echo $domain;?>images/logo.png"></a>
   <ul class="headerNav hidden md:flex flex-auto justify-center items-center">
-    <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="./">Inicio</a></li>
+    <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="<?php echo $domain;?>">Inicio</a></li>
     <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="/somos.php">¿Quiénes Somos?</a></li>
     <li class="inline-block mr-2 md:mr-4 md:relative">
       <span class="uppercase flex">Productos</span>
@@ -43,7 +44,7 @@
   <div id="menuWrapper" class="px-4 py-2 mt-16 w-full h-full overflow-y-scroll">
     <div id="menuMobClose" class="absolute top-4 right-4"><i class="fa fa-times fa-2x"></i></div>
     <ul class="overflow-y-scroll mb-16">
-      <li class="py-2 uppercase"><a href="./" class="flex">Inicio</a></li>
+      <li class="py-2 uppercase"><a href="<?php echo $domain;?>" class="flex">Inicio</a></li>
       <li class="py-2 uppercase"><a href="/somos.php" class="flex">¿Quiénes Somos?</a></li>
       <li class="py-2 uppercase">
         <div id="productMob" class="flex w-full">
