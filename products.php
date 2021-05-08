@@ -11,17 +11,17 @@ ini_set("display_errors", true);
 </head>
 <body class="font-sans font-thin bg-gray-100">
     <?php
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+        if (isset($_GET['slug'])) {
+            $slug = $_GET['slug'];
         } else {
-        ?>
-            <script type="text/javascript">window.location ="index.php";</script>
-        <?php 
+    ?>
+        <script type="text/javascript">window.location ="index.php";</script>
+    <?php 
         }
         require_once 'conexion.php';
         require_once "functions/functions.php";
-        $categories = select_to_where("categoria","descripcion",array("id"=>$id));
-        $producto = select_to_where("productos","nombre,descripcion,foto",array("categoria"=>$id));
+        $categories = select_to_where("categoria","id,descripcion",array("slug"=>$slug));
+        $producto = select_to_where("productos","nombre,descripcion,foto",array("categoria"=>$categories[0]["id"]));
     ?>
         <?php include 'header.php'; ?>
         <div class="min-h-screen">

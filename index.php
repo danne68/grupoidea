@@ -12,7 +12,7 @@
     <?php
         require_once "conexion.php";
         require_once "functions/functions.php";
-        $categories = select_to("categoria","id,categoria,foto");
+        $categories = select_to("categoria","id,slug,categoria,foto");
     ?>
         <?php include 'header.php'; ?>
         <div class="min-h-screen">
@@ -23,7 +23,7 @@
                         <div class="flex flex-wrap">
                             <?php foreach($categories as $cat) {?>
                                 <div class="w-1/3 pr-2 pl-2 py-2">
-                                    <a href="products.php?id=<?php echo $cat['id']; ?>">
+                                    <a href="products/<?php echo $cat['slug']; ?>">
                                         <img src="images/categorias/<?php echo $cat['foto']; ?>" alt="<?php echo $cat['categoria']; ?>" onerror="this.onerror=null;this.src='images/no-image.jpg';">
                                     </a>
                                 </div>

@@ -11,7 +11,7 @@ function insert_into($tbl,$campos,$values){
 function select_to_where($tbl,$campos,$donde){
 	if(is_array($donde)) {
 		foreach( $donde as $key => $key_value ){
-			$query_array[] = urlencode( $key ) . '=' . urlencode( $key_value );
+			$query_array[] = urlencode( $key ) . '=' .'"'.urlencode( $key_value ).'"';
 		}
 		$unDonde = implode($query_array);
 	} else {
