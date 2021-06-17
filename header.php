@@ -6,7 +6,7 @@
   } else {
     require_once "conexion.php";
     require_once "functions/functions.php";
-    $menuProd = select_to("categoria","id,categoria");
+    $menuProd = select_to("categoria","slug,categoria");
 
     if (isset($_GET['pass'])) {
       require_once("password.php");
@@ -25,7 +25,7 @@
       <?php if (sizeof($menuProd) != 0) { ?>
         <ul class="hidden w-9/5 left-auto top-4">
           <?php foreach($menuProd as $menu) {?>
-            <li class="pl-2 pr-2 flex"><a class="py-2 md:pb-1 w-full text-lg md:text-base" href="/products.php?id=<?php echo $menu['id']; ?>"><?php echo $menu['categoria']; ?></a></li>
+            <li class="pl-2 pr-2 flex"><a class="py-2 md:pb-1 w-full text-lg md:text-base" href="<?php echo $domain;?>producto/<?php echo $menu['slug']; ?>"><?php echo $menu['categoria']; ?></a></li>
           <?php } ?>
         </ul>
       <?php } ?>
@@ -54,7 +54,7 @@
         <?php if (sizeof($menuProd) != 0) { ?>
           <ul id="productList" class="hidden pl-4 normal-case">
             <?php foreach($menuProd as $menu) {?>
-              <li class="pl-2 pr-2 flex"><a class="py-2 w-full text-lg" href="/products.php?id=<?php echo $menu['id']; ?>"><?php echo $menu['categoria']; ?></a></li>
+              <li class="pl-2 pr-2 flex"><a class="py-2 w-full text-lg" href="<?php echo $domain;?>producto/<?php echo $menu['slug']; ?>"><?php echo $menu['categoria']; ?></a></li>
             <?php } ?>
           </ul>
         <?php } ?>

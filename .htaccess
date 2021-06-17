@@ -1,0 +1,20 @@
+RewriteEngine On
+
+RewriteRule ^$ index.php [NC,L]
+RewriteRule ^pass$ ?pass [NC,L]
+RewriteRule ^contacto$ contact.php [NC,L]
+RewriteRule ^contacto/$ contact.php [NC,L]
+RewriteRule ^contacto/pass$ contact.php?pass [NC,L]
+RewriteRule ^somos$ somos.php [NC,L]
+RewriteRule ^somos/$ somos.php [NC,L]
+RewriteRule ^somos/pass$ somos.php?pass [NC,L]
+RewriteRule ^producto/([a-zA-Z_-]+)/pass$ products.php?slug=$1&pass [NC,L]
+RewriteRule ^producto/([a-zA-Z_-]+)$ products.php?&slug=$1 [NC,L]
+RewriteRule ^producto/([a-zA-Z_-]+)/$ products.php?&slug=$1 [NC,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php70” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php70___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
