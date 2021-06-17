@@ -7,6 +7,9 @@ if($_GET['action'] == 'form') {
 	$uploadOp = $_POST['uploadOp'];
 	$operation = $_POST['operation'];
 	$opName = $_POST['opName'];
+	if (isset($_POST['slug'])) {
+		$slug = $_POST['slug'];
+	}
 	if (isset($_POST['description'])) {
 		$description = $_POST['description'];
 	}
@@ -37,6 +40,11 @@ if($_GET['action'] == 'form') {
 					<?php if (isset($opName)) { ?>
 						<div class="w-full mb-4">
 							<input class="py-2 px-2 w-full border rounded" type="text" placeholder="<?php echo $opName['place']; ?>" id="<?php echo $opName['id']; ?>" name="<?php echo $opName['name']; ?>" />
+						</div>
+					<?php } ?>
+					<?php if (isset($slug)) { ?>
+						<div class="w-full mb-4">
+							<input class="py-2 px-2 w-full border rounded" type="text" placeholder="<?php echo $slug['place']; ?>" id="<?php echo $slug['id']; ?>" name="<?php echo $slug['name']; ?>" />
 						</div>
 					<?php } ?>
 					<?php if (isset($description)) { ?>
@@ -115,17 +123,19 @@ $( document ).ready(function() {
 		$("#ok").hide();
 	});
 
-    $('form').each(function () {
-        $(this).validate({
+	$('form').each(function () {
+		$(this).validate({
 			rules: {
 				categoria: { required:true },
 				nombre: { required:true, minlength: 2},
+				slug: { required:true, minlength: 2, pattern: "^[a-zA-Z_-]*$",},
 				descripcion: { required:true, minlength: 2},
 				image: { required:true, accept: "image/*, video/*"}
 			},
 			messages: {
 				categoria: "Debe seleccionar una categoría",
 				nombre: "Debe introducir un nombre",
+				slug: "Debe introducir una ruta sin numeros",
 				descripcion: "Debe introducir una descripcion",
 				image: "Debe subir una imagen"
 			},
@@ -177,6 +187,6 @@ $( document ).ready(function() {
 				});
 			}
 		});
-    });
+	});
 });
 </script>

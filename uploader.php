@@ -15,12 +15,12 @@
 				foreach ($promos as $prom) { ?>
 					<div class="product-item p-2">
 						<div class="showItem flex flex-col md:flex-row items-center">
-							<div class="w-full md:w-1/4 flex md:w-1/4 pr-2">
-								<div class="md:hidden font-normal mr-4">Promociones</div>
+							<div class="w-full md:w-1/4 flex md:w-1/4 md:pr-2">
+								<div class="md:hidden w-1/3 font-normal mr-2">Promociones</div>
 								<?php echo $prom["descripcion"]; ?>
 							</div>
 							<div class="w-full flex md:flex-auto mb-4 md:mb-0">
-								<div class="md:hidden font-normal mr-4">Foto</div>
+								<div class="md:hidden w-1/3 font-normal mr-2">Foto</div>
 								<?php echo $prom["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
@@ -34,11 +34,11 @@
 								<input type="hidden" name="imagen" value="<?php echo $prom['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprom">
 								<div class="w-full md:w-1/4 md:pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Promociones</div>
+									<div class="md:hidden w-1/3 font-normal mr-2">Promociones</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prom['descripcion']; ?>">
 								</div>
 								<div class="flex items-center mb-4 md:mb-0">
-									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
+									<div class="md:hidden w-1/3 font-normal mr-2">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
@@ -65,7 +65,7 @@
 			<?php } ?>
 		<?php } ?>
 		<?php if($_GET['action'] == 'showProd') {
-			$products = select_to("productos","*");
+			$products = select_to_order("productos","*","categoria");
 			if (sizeof($products) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($products) ?>)</span></div>
 				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
@@ -78,21 +78,21 @@
 				foreach ($products as $prod) { ?>
 					<div class="product-item p-2">
 						<div class="showItem flex flex-col md:flex-row items-center">
-							<div class="w-full flex md:w-1/6 pr-2">
-								<div class="md:hidden font-normal mr-4">Categoría</div>
+							<div class="w-full flex md:w-1/6 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Categoría</div>
 								<?php $categories = select_to_where("categoria","categoria",array("id"=>$prod['categoria'])); ?>
 								<?php foreach($categories as $cat) { echo $cat['categoria']; } ?>
 							</div>
-							<div class="w-full flex md:w-1/5 pr-2">
-								<div class="md:hidden font-normal mr-4">Nombre</div>
+							<div class="w-full flex md:w-1/5 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Nombre</div>
 								<?php echo $prod["nombre"]; ?>
 							</div>
-							<div class="w-full flex md:w-1/6 pr-2">
-								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+							<div class="w-full flex md:w-1/6 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Descripcion</div>
 								<?php echo substr($prod["descripcion"],0,40); ?>...
 							</div>
 							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
-								<div class="md:hidden font-normal mr-4">Foto</div>
+								<div class="md:hidden w-1/4 font-normal mr-2">Foto</div>
 								<?php echo $prod["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
@@ -105,8 +105,8 @@
 								<input type="hidden" name="id" value="<?php echo $prod['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $prod['foto']; ?>">
 								<input type="hidden" name="opcion" value="opprod">
-								<div class="w-full md:w-1/5 pr-2 flex relative">
-									<div class="md:hidden font-normal mr-4 self-center">Categoría</div>
+								<div class="w-full md:w-1/5 md:pr-2 flex relative">
+									<div class="md:hidden w-1/4 font-normal mr-2 self-center">Categoría</div>
 									<i class="absolute fa fa-chevron-down top-3 right-3"></i>
 									<select class="py-2 pl-2 pr-5 w-full border rounded" name="categoria">
 										<?php $categories = select_to("categoria","id,categoria"); ?>
@@ -117,16 +117,16 @@
 										<?php } ?>
 									</select>
 								</div>
-								<div class="w-full md:w-1/5 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
+								<div class="w-full md:w-1/5 md:pr-2 flex">
+									<div class="md:hidden w-1/4 font-normal mr-2 self-center">Nombre</div>
 									<input type="text" name="nombre" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['nombre']; ?>">
 								</div>
-								<div class="w-full md:w-1/5 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<div class="w-full md:w-1/5 md:pr-2 flex">
+									<div class="md:hidden w-1/4 font-normal mr-2 self-center">Descripcion</div>
 									<input type="text" name="descripcion" class="py-2 px-2 w-full border rounded" value="<?php echo $prod['descripcion']; ?>">
 								</div>
-								<div class="flex pr-2 items-center mb-4 md:mb-0">
-									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
+								<div class="flex md:pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden w-1/4 font-normal mr-2 self-center">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
@@ -153,28 +153,33 @@
 			<?php } ?>
 		<?php } ?>
 		<?php if($_GET['action'] == 'showCat') {
-			$categories = select_to("categoria","id,categoria,descripcion,foto");
+			$categories = select_to("categoria","id,categoria,slug,descripcion,foto");
 			if (sizeof($categories) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($categories) ?>)</span></div>
 				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
-					<div class="w-1/4">Nombre</div>
-					<div class="w-1/4">Descripcion</div>
+					<div class="w-1/6">Nombre</div>
+					<div class="w-1/5">Slug</div>
+					<div class="w-1/5">Descripcion</div>
 					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach($categories as $cat) { ?>
 					<div class="product-item p-2">
 						<div class="showItem flex flex-col md:flex-row items-center">
-							<div class="w-full flex md:w-1/4 pr-2">
-								<div class="md:hidden font-normal mr-4">Nombre</div>
+							<div class="w-full flex md:w-1/4 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Nombre</div>
 								<?php echo $cat["categoria"]; ?>
 							</div>
-							<div class="w-full flex md:w-1/4 pr-2">
-								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+							<div class="w-full flex md:w-1/5 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Slug</div>
+								<?php echo $cat["slug"]; ?>
+							</div>
+							<div class="w-full flex md:w-1/4 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Descripcion</div>
 								<?php echo substr($cat["descripcion"],0,40); ?>...
 							</div>
 							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
-								<div class="md:hidden font-normal mr-4">Foto</div>
+								<div class="md:hidden w-1/4 font-normal mr-2">Foto</div>
 								<?php echo $cat["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
@@ -187,16 +192,20 @@
 								<input type="hidden" name="id" value="<?php echo $cat['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $cat['foto']; ?>">
 								<input type="hidden" name="opcion" value="opcat">
-								<div class="w-full md:w-1/4 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Nombre</div>
 									<input type="text" name="categoria" class="py-2 px-2 w-full border rounded" value="<?php echo $cat['categoria']; ?>">
 								</div>
-								<div class="w-full md:w-1/4 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Slug</div>
+									<input type="text" name="slug" class="py-2 px-2 w-full border rounded" value="<?php echo $cat['slug']; ?>">
+								</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Descripcion</div>
 									<textarea name="descripcion" class="py-2 px-2 w-full border rounded" rows='1'><?php echo $cat['descripcion']; ?></textarea>
 								</div>
-								<div class="flex pr-2 items-center mb-4 md:mb-0">
-									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
+								<div class="flex md:pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden w-1/3 font-normal mr-2">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
@@ -233,6 +242,9 @@
 		$opcion = $_POST["opcion"];
 		if(isset($_POST['nombre'])) {
 			$nom_prod =	$_POST["nombre"];
+		}
+		if(isset($_POST['slug'])) {
+			$slug =	$_POST["slug"];
 		}
 		if(isset($_POST['categoria'])) {
 			$categoria = $_POST["categoria"];
@@ -279,8 +291,8 @@
 						$resultado = move_uploaded_file($temporal, $destino);
 						if ($resultado) {	
 							if ($consulta == 1) {
-								$campos = array("categoria","descripcion","foto");
-								$values = array($nom_prod,$det_prod,$name);
+								$campos = array("categoria","slug","descripcion","foto");
+								$values = array($nom_prod,$slug,$det_prod,$name);
 								insert_into("categoria",$campos,$values);
 							}
 							if ($consulta == 2) {

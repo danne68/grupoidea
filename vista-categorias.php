@@ -8,27 +8,20 @@
 		echo "No tienes permiso para entrar a esta pagina";
 		echo ("<script type='text/javascript'>
 		setTimeout(function () {
-			window.location.href= 'index.php';
-		},3000);
+			window.location.href= '../.php';
+		},1000);
 		</script>");
 		exit();
 	}
 	require_once 'conexion.php';
 	require_once "functions/functions.php";
-	$categories = select_to("categoria","id,categoria,descripcion,foto");
+	$categories = select_to("categoria","id,categoria,slug,descripcion,foto");
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
 <head>
-    <title>Grupo Idea - Categorias</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
-	<link rel="shortcut icon" href="">
-	<link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.0/tailwind.min.css" crossorigin="anonymous">
+	<title>Grupo Idea - Categorias</title>
+	<?php include 'metas.php'; ?>
 </head>
 <body class="font-sans font-thin bg-gray-100">
 	<?php include 'header-pass.php'; ?>
@@ -46,28 +39,33 @@
 			<?php if (sizeof($categories) != 0) { ?>
 				<div class="w-full">Todos<span class="text-grupo-red">(<?php echo count($categories) ?>)</span></div>
 				<div class="hidden md:flex border-b border-grupo-red px-2 py-2 font-normal">
-					<div class="w-1/4">Nombre</div>
-					<div class="w-1/4">Descripcion</div>
+					<div class="w-1/6">Nombre</div>
+					<div class="w-1/5">Slug</div>
+					<div class="w-1/5">Descripcion</div>
 					<div class="w-auto">Foto</div>
 				</div>
 				<?php $contador = 0;
 				foreach($categories as $cat) { ?>
 					<div class="product-item p-2">
 						<div class="showItem flex flex-col md:flex-row items-center">
-							<div class="w-full flex md:w-1/4 pr-2">
-								<div class="md:hidden font-normal mr-4">Nombre</div>
+							<div class="w-full flex md:w-1/5 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Nombre</div>
 								<?php echo $cat["categoria"]; ?>
 							</div>
-							<div class="w-full flex md:w-1/4 pr-2">
-								<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+							<div class="w-full flex md:w-1/5 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Slug</div>
+								<?php echo $cat["slug"]; ?>
+							</div>
+							<div class="w-full flex md:w-1/5 md:pr-2">
+								<div class="md:hidden w-1/4 font-normal mr-2">Descripcion</div>
 								<?php echo substr($cat["descripcion"],0,40); ?>...
 							</div>
 							<div class="w-full flex md:w-2/5 mb-4 md:mb-0">
-								<div class="md:hidden font-normal mr-4">Foto</div>
+								<div class="md:hidden w-1/4 font-normal mr-2">Foto</div>
 								<?php echo $cat["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
-								<i class="absolute fa fa-pencil top-2 left-2"></i>
+								<i class="absolute fa fa-pencil-alt top-2 left-2"></i>
 								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
@@ -76,21 +74,25 @@
 								<input type="hidden" name="id" value="<?php echo $cat['id']; ?>">
 								<input type="hidden" name="imagen" value="<?php echo $cat['foto']; ?>">
 								<input type="hidden" name="opcion" value="opcat">
-								<div class="w-full md:w-1/4 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Nombre</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Nombre</div>
 									<input type="text" name="categoria" class="py-2 px-2 w-full border rounded" value="<?php echo $cat['categoria']; ?>">
 								</div>
-								<div class="w-full md:w-1/4 pr-2 flex">
-									<div class="md:hidden font-normal mr-4 self-center">Descripcion</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Slug</div>
+									<input type="text" name="slug" class="py-2 px-2 w-full border rounded" value="<?php echo $cat['slug']; ?>">
+								</div>
+								<div class="w-full md:w-1/4 md:pr-2 flex">
+									<div class="md:hidden w-1/3 font-normal mr-2">Descripcion</div>
 									<textarea name="descripcion" class="py-2 px-2 w-full border rounded" rows='1'><?php echo $cat['descripcion']; ?></textarea>
 								</div>
-								<div class="flex pr-2 items-center mb-4 md:mb-0">
-									<div class="md:hidden font-normal mr-4 self-center">Foto</div>
+								<div class="flex md:pr-2 items-center mb-4 md:mb-0">
+									<div class="md:hidden w-1/3 font-normal mr-2">Foto</div>
 									<input type="file" class="py-1 px-2 w-full border rounded" name="image"/>
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
-										<i class="absolute fa fa-trash-o top-2 left-2"></i>
+										<i class="absolute fa fa-trash-alt top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 									</div>
 									<div class="relative text-grupo-red mr-1">
@@ -113,16 +115,15 @@
 		</div>
 	</div>
 	<div id="Modal"></div>
-    <div id="overlayAlert"></div>
-    <div class="spinner">
-        <div class="dot1"></div>
-        <div class="dot2"></div>
-    </div>
+	<div id="overlayAlert"></div>
+	<div class="spinner">
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+	</div>
 	<!--scripts-->
-	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/functions.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+  <script src="https://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 	<script type='text/javascript' language='javascript'>
 	$( document ).ready(function() {
 		$("#salir").on("click", function() {
@@ -140,6 +141,7 @@
 				uploadOp: "showCat",
 				operation: { type: "hidden", name: "opcion", value: "opcat" },
 				opName: { type: "text", name: "nombre", id: "name", place: "nombre de la categoria" },
+				slug: { type: "text", name: "slug", id: "slug", place: "nombre de la ruta" },
 				description: { type: "textarea", name: "descripcion", id: "description", place: "descripción de la categoria" }
 			};
 			showModal(data);

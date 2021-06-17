@@ -49,6 +49,8 @@
 			$id = $_POST["id"];
 		if(isset($_POST['categoria']))
 			$category =	$_POST["categoria"];
+		if(isset($_POST['slug']))
+			$slug =	$_POST["slug"];
 		if(isset($_POST['categoria_id']))
 			$category_id = $_POST["categoria_id"];
 		if(isset($_POST['descripcion']))
@@ -99,15 +101,15 @@
 						if ($resultado) {
 							if ($consulta == 1) {
 								$con = Db::connect();
-								$update = $con->query("UPDATE productos SET nombre = '$name',categoria = '$category',descripcion = '$description',foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+								$update = $con->query("UPDATE productos SET nombre = '$name', categoria = '$category',descripcion = '$description',foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 							}
 							if ($consulta == 2) {
 								$con = Db::connect();
-								$update = $con->query("UPDATE categoria SET categoria = '$category',descripcion = '$description',foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+								$update = $con->query("UPDATE categoria SET categoria = '$category', slug = '$slug', descripcion = '$description',foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 							}
 							if ($consulta == 3) {
 								$con = Db::connect();
-								$update = $con->query("UPDATE promociones SET descripcion = '$description',foto = '$Image_name' WHERE id_promocion = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+								$update = $con->query("UPDATE promociones SET descripcion = '$description', foto = '$Image_name' WHERE id_promocion = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 							}
 							/**************VARIABLES PARA BAJAR EL PESO Y TAMAÑO DE LA IMAGEN UNA VES SUBIDA AL SERVIDOR******************/
 							$ruta_imagen = $destino;
@@ -126,11 +128,11 @@
 		} else {
 			if ($consulta == 1) {
 				$con = Db::connect();
-				$update = $con->query("UPDATE productos SET nombre = '$name',categoria = '$category',descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+				$update = $con->query("UPDATE productos SET nombre = '$name', categoria = '$category',descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 			}
 			if ($consulta == 2) {
 				$con = Db::connect();
-				$update = $con->query("UPDATE categoria SET categoria = '$category',descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+				$update = $con->query("UPDATE categoria SET categoria = '$category', slug = '$slug', descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 			}
 			if ($consulta == 3) {
 				$con = Db::connect();
