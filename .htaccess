@@ -5,6 +5,7 @@ RewriteRule ^pass$ ?pass [NC,L]
 RewriteRule ^contacto$ contact.php [NC,L]
 RewriteRule ^contacto/$ contact.php [NC,L]
 RewriteRule ^contacto/pass$ contact.php?pass [NC,L]
+
 RewriteRule ^somos$ somos.php [NC,L]
 RewriteRule ^somos/$ somos.php [NC,L]
 RewriteRule ^somos/pass$ somos.php?pass [NC,L]

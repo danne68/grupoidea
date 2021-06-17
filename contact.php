@@ -13,7 +13,7 @@ ini_set("display_errors", true);
 <body class="font-sans font-thin bg-gray-100">
     <?php include 'header.php'; ?>
     <div class="min-h-screen">
-        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(images/contact.jpg)">
+        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(<?php echo $domain;?>images/contact.jpg)">
             <span class="text-center w-full uppercase absolute text-white text-4xl px-2" style="top: 7rem;text-shadow: 0px 0px 13px black;">Contáctanos</span>
         </section>
         <div class="container mx-auto py-8 px-2">
@@ -49,7 +49,7 @@ ini_set("display_errors", true);
                     </div>
                     <div class="w-full md:w-1/2 mb-8 md:mb-0">
                         <a target="blank" href="//www.google.com.mx/maps/place/Idea+Gafetes+y+Letreros/@21.1678751,-86.840994,17z/data=!4m2!3m1!1s0x8f4c2c0cdcb2a2af:0xbf7e10b2925043cf?hl=es">
-                            <img class="w-full" src="images/location.png" alt="Gafetes y letreros idea">
+                            <img class="w-full" src="<?php echo $domain;?>images/location.png" alt="Gafetes y letreros idea">
                         </a>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ ini_set("display_errors", true);
                     // var dataString = 'name='+$('#name').val()+'&email='+$('#email').val()+'&message='+$('#message').val();
                     $.ajax({
                         type: "POST",
-                        url : "envio.php",
+                        url : "../envio.php",
                         data : postData,
                         beforeSend: function()
                         {

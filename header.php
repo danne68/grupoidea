@@ -19,18 +19,18 @@
   <a href="<?php echo $domain;?>" class="w-1/4 md:w-auto items-center flex"><img class="w-full max-w-40" src="<?php echo $domain;?>images/logo.png"></a>
   <ul class="headerNav hidden md:flex flex-auto justify-center items-center">
     <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="<?php echo $domain;?>">Inicio</a></li>
-    <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="/somos.php">¿Quiénes Somos?</a></li>
+    <li class="inline-block mr-2 md:mr-4"><a class="uppercase flex" href="/somos/">¿Quiénes Somos?</a></li>
     <li class="inline-block mr-2 md:mr-4 md:relative">
       <span class="uppercase flex">Productos</span>
       <?php if (sizeof($menuProd) != 0) { ?>
         <ul class="hidden w-9/5 left-auto top-4">
           <?php foreach($menuProd as $menu) {?>
-            <li class="pl-2 pr-2 flex"><a class="py-2 md:pb-1 w-full text-lg md:text-base" href="<?php echo $domain;?>producto/<?php echo $menu['slug']; ?>"><?php echo $menu['categoria']; ?></a></li>
+            <li class="pl-2 pr-2 flex"><a class="py-2 md:pb-1 w-full text-lg md:text-base" href="<?php echo $domain;?>producto/<?php echo $menu['slug']; ?>/"><?php echo $menu['categoria']; ?></a></li>
           <?php } ?>
         </ul>
       <?php } ?>
     </li>
-    <li class="inline-block"><a class="uppercase flex" href="/contact.php">Contacto</a></li>
+    <li class="inline-block"><a class="uppercase flex" href="/contacto/">Contacto</a></li>
   </ul>
   <ul class="flex w-full md:w-auto justify-end items-center">
     <li class="pr-2"><a href="https://www.facebook.com/IDEAGafetesyLetreros" target="_blank" class="fab fa-facebook fa-lg hover:text-red-600"></a></li>
@@ -45,7 +45,7 @@
     <div id="menuMobClose" class="absolute top-4 right-4"><i class="fa fa-times fa-2x"></i></div>
     <ul class="overflow-y-scroll mb-16">
       <li class="py-2 uppercase"><a href="<?php echo $domain;?>" class="flex">Inicio</a></li>
-      <li class="py-2 uppercase"><a href="/somos.php" class="flex">¿Quiénes Somos?</a></li>
+      <li class="py-2 uppercase"><a href="/somos/" class="flex">¿Quiénes Somos?</a></li>
       <li class="py-2 uppercase">
         <div id="productMob" class="flex w-full">
           <span class="flex-1">Productos</span>
@@ -59,7 +59,7 @@
           </ul>
         <?php } ?>
       </li>
-      <li class="py-2 uppercase"><a href="/contact.php" class="flex">Contacto</a></li>
+      <li class="py-2 uppercase"><a href="/contacto/" class="flex">Contacto</a></li>
     </ul>
   </div>
 </div>

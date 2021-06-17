@@ -23,7 +23,7 @@
 <div id="overlay"></div>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
+<script src="<?php echo $domain;?>assets/js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script>
 	$( document ).ready(function() {
@@ -97,7 +97,7 @@
 			}
 		});
 		$('#overlay').click(function(){
-			var location = window.location.href.replace(window.location.search,'');
+			var location = window.location.href.replace('pass','');
 			window.location = location;
 		});
 		$('#user, #pass').keypress(function() {
@@ -109,6 +109,8 @@
 				$("body").removeClass("noscroll");
 				$("#overlay").hide();
 				e.preventDefault();
+				var location = window.location.href.replace('pass','');
+				window.location = location;
 			}
 		});
 	});

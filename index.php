@@ -23,7 +23,7 @@
                         <div class="flex flex-wrap">
                             <?php foreach($categories as $cat) {?>
                                 <div class="w-1/3 pr-2 pl-2 py-2">
-                                    <a href="producto/<?php echo $cat['slug']; ?>">
+                                    <a href="producto/<?php echo $cat['slug']; ?>/">
                                         <img src="images/categorias/<?php echo $cat['foto']; ?>" alt="<?php echo $cat['categoria']; ?>" onerror="this.onerror=null;this.src='images/no-image.jpg';">
                                     </a>
                                 </div>

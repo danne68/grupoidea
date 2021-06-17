@@ -25,7 +25,7 @@ ini_set("display_errors", true);
     ?>
         <?php include 'header.php'; ?>
         <div class="min-h-screen">
-            <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(../images/productos-bg.jpg)">
+            <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(../../images/productos-bg.jpg)">
                 <?php foreach($categories as $cat) {?><span class="flex w-full md:w-4/5 items-center absolute bottom-0 top-0 left-0 right-0 mx-auto text-center text-white text-lg px-2" style="text-shadow: 0px 0px 13px black;"><?php echo $cat["descripcion"]; ?></span><?php } ?>
             </section>
             <div class="container mx-auto py-8 px-2">
@@ -34,7 +34,7 @@ ini_set("display_errors", true);
                         <div class="flex flex-wrap">
                             <?php foreach($producto as $prod) {?>
                                 <div class="w-1/2 md:w-1/4 px-3 pb-8 imageModal">
-                                    <img class="cursor-pointer" src="../images/productos/<?php echo $prod["foto"]; ?>" alt="<?php echo $prod["nombre"]; ?>" onerror="this.onerror=null;this.src='../images/no-image.jpg';">
+                                    <img class="cursor-pointer" src="../../images/productos/<?php echo $prod["foto"]; ?>" alt="<?php echo $prod["nombre"]; ?>" onerror="this.onerror=null;this.src='../images/no-image.jpg';">
                                     <input type="hidden" value="<?php echo $prod['foto']; ?>">
                                     <input type="hidden" value="<?php echo $prod['descripcion']; ?>">
                                 </div>

@@ -12,7 +12,7 @@
 <body class="font-sans font-thin bg-gray-100">
     <?php include 'header.php'; ?>
     <div class="min-h-screen">
-        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(images/pic11.jpg)">
+        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(<?php echo $domain;?>images/pic11.jpg)">
           <span class="text-center w-full uppercase absolute text-white text-4xl px-2" style="top: 7rem;text-shadow: 0px 0px 13px black;">¿QUIÉNES SOMOS?</span>
         </section>
         <div class="container mx-auto py-8 px-2">
@@ -32,7 +32,7 @@
             </div>
           </section>
           <div class="flex justify-center mt-8">
-            <a href="./contact.php" class="bg-grupo-red hover:bg-red-400 text-white py-2 px-4 rounded uppercase">Contáctanos</a> 
+            <a href="/contacto/" class="bg-grupo-red hover:bg-red-400 text-white py-2 px-4 rounded uppercase">Contáctanos</a> 
           </div>
         </div>
     </div>
