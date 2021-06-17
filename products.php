@@ -21,6 +21,7 @@
         require_once 'conexion.php';
         require_once "functions/functions.php";
         $categories = select_to_where("categoria","id,descripcion",array("slug"=>$slug));
+        $idSite = $categories[0]["id"];
         $producto = select_to_where("productos","nombre,descripcion,foto",array("categoria"=>$categories[0]["id"]));
     ?>
         <?php include 'header.php'; ?>
@@ -42,6 +43,34 @@
                         </div>
                     <?php } ?>
                 </section>
+            </div>
+            <div class="container mx-auto flex w-full items-center justify-center py-8">
+                <?php $categoriesNext = select_to("categoria","id,slug,categoria");
+                    if(count($categoriesNext)>0) {
+                        $cantidad= count($categoriesNext);
+                        for ($i = 0; $i < $cantidad; $i++) {
+                            if($categoriesNext[$i]["id"] == $idSite){
+                                if($i==0){
+                                    $step = $cantidad-1;
+                                } else {
+                                    $step = $i-1;
+                                }
+                                if($i==($cantidad-1)){
+                                    $forward = 0;
+                                } else {
+                                    $forward = $i+1;
+                                }
+                                $prevName = $categoriesNext[$step]["categoria"];
+                                $prevSlug = $categoriesNext[$step]["slug"];
+
+                                $nextName = $categoriesNext[$forward]["categoria"];
+                                $nextSlug = $categoriesNext[$forward]["slug"];
+                            }
+                        }
+                    }
+                ?>
+                <a class="bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$prevSlug; ?>/"><i class="fas fa-arrow-left fa-lg mr-4"></i><?php echo $prevName; ?></a>
+                <a class="bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$nextSlug; ?>/"><?php echo $nextName; ?><i class="fas fa-arrow-right fa-lg ml-4"></i></a>
             </div>
         </div>
         <?php include 'footer.php'; ?>
