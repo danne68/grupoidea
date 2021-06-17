@@ -23,7 +23,6 @@
 <div id="overlay"></div>
 
 <!-- Scripts -->
-<script src="<?php echo $domain;?>assets/js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script>
 	$( document ).ready(function() {
@@ -45,7 +44,7 @@
 				$.ajax({
 					
 					type: "POST",
-					url : "ingreso.php",
+					url : "<?php echo $domain;?>ingreso.php",
 					data : postData,
 					beforeSend: function()
 					{
@@ -55,7 +54,7 @@
 					success: function(data, textStatus, jqXHR)
 					{
 						if(data == 'true') {
-							window.location="vista-promo.php";
+							window.location="<?php echo $domain;?>vista-promo.php";
              
 						}
 						else {

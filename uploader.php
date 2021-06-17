@@ -24,7 +24,7 @@
 								<?php echo $prom["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
-								<i class="absolute fa fa-pencil top-2 left-2"></i>
+								<i class="absolute fa fa-pencil-alt top-2 left-2"></i>
 								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
@@ -43,7 +43,7 @@
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
-										<i class="absolute fa fa-trash-o top-2 left-2"></i>
+										<i class="absolute fa fa-trash-alt top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 									</div>
 									<div class="relative text-grupo-red mr-1">
@@ -96,7 +96,7 @@
 								<?php echo $prod["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
-								<i class="absolute fa fa-pencil top-2 left-2"></i>
+								<i class="absolute fa fa-pencil-alt top-2 left-2"></i>
 								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
@@ -131,7 +131,7 @@
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
-										<i class="absolute fa fa-trash-o top-2 left-2"></i>
+										<i class="absolute fa fa-trash-alt top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 									</div>
 									<div class="relative text-grupo-red mr-1">
@@ -178,7 +178,7 @@
 								<?php echo $cat["foto"]; ?>
 							</div>
 							<div class="w-full md:w-auto relative text-grupo-red">
-								<i class="absolute fa fa-pencil top-2 left-2"></i>
+								<i class="absolute fa fa-pencil-alt top-2 left-2"></i>
 								<input type="button" value="Editar" class="w-full button edit cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 							</div>
 						</div>
@@ -201,7 +201,7 @@
 								</div>
 								<div class="flex flex-auto items-center justify-center md:justify-end">
 									<div class="relative text-grupo-red mr-1">
-										<i class="absolute fa fa-trash-o top-2 left-2"></i>
+										<i class="absolute fa fa-trash-alt top-2 left-2"></i>
 										<input type="submit" value="Eliminar" class="button delete cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded" />
 									</div>
 									<div class="relative text-grupo-red mr-1">
@@ -284,8 +284,8 @@
 								insert_into("categoria",$campos,$values);
 							}
 							if ($consulta == 2) {
-								$campos = array("nombre","descripcion","categoria","foto");
-								$values = array($nom_prod,$det_prod,$categoria,$name);
+								$campos = array("nombre","descripcion","categoria","foto", "precio");
+								$values = array($nom_prod,$det_prod,$categoria,$name, 0.00);
 								insert_into("productos",$campos,$values);
 							}
 							if ($consulta == 3) {

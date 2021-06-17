@@ -15,7 +15,7 @@ ini_set("display_errors", true);
             $slug = $_GET['slug'];
         } else {
     ?>
-        <script type="text/javascript">window.location ="index.php";</script>
+        <script type="text/javascript">window.location ="/";</script>
     <?php 
         }
         require_once 'conexion.php';

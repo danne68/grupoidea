@@ -89,7 +89,7 @@ if($_GET['action'] == 'form') {
 	<div id="ProductoImage" class="modal image">
 		<div class="modal-content pt-6 pb-8 px-4 bg-white">
 			<div class="flex flex-col">
-				<img class="w-full" src="../images/productos/<?php echo $image ?>" alt="" onerror="this.onerror=null;this.src='images/no-image.jpg';">
+				<img class="w-full" src="../../images/productos/<?php echo $image ?>" alt="" onerror="this.onerror=null;this.src='images/no-image.jpg';">
 				<span><?php echo $label; ?></span>
 			</div>
 		</div>

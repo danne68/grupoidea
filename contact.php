@@ -80,7 +80,7 @@ ini_set("display_errors", true);
                     // var dataString = 'name='+$('#name').val()+'&email='+$('#email').val()+'&message='+$('#message').val();
                     $.ajax({
                         type: "POST",
-                        url : "../envio.php",
+                        url : "<?php echo $domain;?>envio.php",
                         data : postData,
                         beforeSend: function()
                         {

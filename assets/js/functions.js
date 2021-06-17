@@ -51,6 +51,6 @@ function closeModalAlert() {
 function exit() {
     $.get("salir.php", function(data) {
         $(".result").html(data);
-        window.location = "index.php";
+        window.location = "../";
     });
 }

@@ -3,8 +3,8 @@
 ?>
 <ul id="slider">
     <?php if ( sizeof($result) == 0) { ?>
-        <li><img src="http://placehold.it/1200x470/" alt="" /></li>
-        <li><img src="http://placehold.it/951x470/" alt="" /></li>
+        <li><img src="https://placehold.it/1200x470/" alt="" /></li>
+        <li><img src="https://placehold.it/951x470/" alt="" /></li>
     <?php
     }
     else {
