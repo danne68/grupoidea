@@ -69,8 +69,14 @@
                         }
                     }
                 ?>
-                <a class="bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$prevSlug; ?>/"><i class="fas fa-arrow-left fa-lg mr-4"></i><?php echo $prevName; ?></a>
-                <a class="bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$nextSlug; ?>/"><?php echo $nextName; ?><i class="fas fa-arrow-right fa-lg ml-4"></i></a>
+                <a class="flex items-center bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$prevSlug; ?>/">
+                    <i class="fas fa-arrow-left fa-lg mr-2"></i>
+                    <span><?php echo $prevName; ?></span>
+                </a>
+                <a class="flex items-center bg-red-400 text-white mx-4 p-2 rounded" href="<?php echo $domain."producto/".$nextSlug; ?>/">
+                    <span><?php echo $nextName; ?></span>
+                    <i class="fas fa-arrow-right fa-lg ml-2"></i>
+                </a>
             </div>
         </div>
         <?php include 'footer.php'; ?>
