@@ -7,7 +7,7 @@
     require_once "conexion.php";
     require_once "functions/functions.php";
     $menuProd = select_to("categoria","slug,categoria");
-
+    $redes = select_to("redes","icon,link");
     if (isset($_GET['pass'])) {
       require_once("password.php");
     }
@@ -33,11 +33,11 @@
     <li class="inline-block"><a class="uppercase flex" href="/contacto/">Contacto</a></li>
   </ul>
   <ul class="flex w-full md:w-auto justify-end items-center">
-    <li class="pr-2"><a href="https://www.facebook.com/IDEAGafetesyLetreros" target="_blank" class="fab fa-facebook fa-lg hover:text-red-600"></a></li>
-    <li class="pr-2"><a href="https://www.messenger.com/t/100100851416203" target="_blank" class="fab fa-facebook-messenger fa-lg hover:text-red-600"></a></li>
-    <li class="pr-2"><a href="https://api.whatsapp.com/send?phone=529983116128&fbclid=IwAR1-HQKL8SDNjemNWKUB_5UAbum51x_2TpNaGciQAXT_0wFJ75hhZXa1-sw" target="_blank" class="fab fa-whatsapp fa-lg hover:text-red-600"></a></li>
-    <li><a href="https://www.linkedin.com/company/idea-gafetes-y-letreros/" target="_blank" class="fab fa-linkedin fa-lg hover:text-red-600"></a></li>
-    <!--<li class="pl-2"><a href="#" class="fab fa-youtube fa-lg hover:text-red-600"></a></li>-->
+    <?php foreach($redes as $social) {?>
+      <?php if ($social["link"] != "") { ?>
+        <li class="pr-2"><a href="<?php echo $social["link"]; ?>" target="_blank" class="fab fa-<?php echo $social["icon"]; ?> fa-lg hover:text-red-600"></a></li>
+      <?php } ?>
+    <?php } ?>
   </ul>
 </header>
 <div id="menuMob" class="relative">
