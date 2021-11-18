@@ -14,6 +14,7 @@
 	require_once 'conexion.php';
 	require_once "functions/functions.php";
 	$redes = select_to("redes","id,icon,name,link");
+  $contact = select_to_where("sitio","id,descripcion",array("id"=>1));
   $conRedes = count($redes);   
 ?>
 <!DOCTYPE HTML>
@@ -29,7 +30,7 @@
       <h2 class="text-2xl font-normal">Redes Sociales</h2>
       <form class="siteChanges" id="multiformsocial" enctype="multipart/form-data" method="POST">
         <input type="hidden" name="opcion" value="opsocial">
-        <div class="p-2 flex flex-row">
+        <div class="p-2 flex flex-col md:flex-row">
           <?php 
             $contadorSocial = 0;
             foreach ($redes as $social) { ?>
@@ -89,16 +90,25 @@
       <h2 class="uppercase mb-4 text-lg"><strong>Productos</strong></h2>
       banner
     </section>
+    -->
     <section class="mb-8">
-      <h2 class="uppercase mb-4 text-lg"><strong>Contacto</strong></h2>
-      banner
-      <div id="editorcontacto">
-        <p>This is the descripción contacto.</p>
-      </div>
-      boton
-    </section> -->
-
-
+      <h2 class="text-2xl font-normal">Contacto</h2>
+      <form class="siteChanges" id="multiformsocial" enctype="multipart/form-data" method="POST">
+        <input type="hidden" name="opcion" value="opcontact">
+        banner
+        <div id="editorcontacto">
+          <?php foreach ($contact as $cont) { ?>
+            <?php echo $cont['descripcion']; ?>
+          <?php } ?>
+        </div>
+        <div class="p-2 flex flex-auto items-center justify-center md:justify-end">		
+          <div class="relative text-grupo-red">
+            <i class="absolute fa fa-check top-2 left-2"></i>
+            <input type="submit" value="Guardar" class="button save cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded">
+          </div>
+        </div>
+      </form>
+    </section>
   </div>
 	<div id="Modal"></div>
 	<div id="overlayAlert"></div>
@@ -115,7 +125,10 @@
 		$( document ).ready(function() {
       CKEDITOR.replace( 'editorsomos' );
       CKEDITOR.replace( 'editorcalidad' );
-      CKEDITOR.replace( 'editorcontacto' );
+      CKEDITOR.replace( 'editorcontacto', {
+        customConfig: '/assets/js/ckeditor_config.js'
+      });
+
 			$("#salir").on("click", function() {
 				exit();
 			});
