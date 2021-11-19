@@ -1,6 +1,9 @@
 <?php 
-session_start();
-ini_set("display_errors", true);
+    session_start();
+    ini_set("display_errors", true);
+    require_once 'conexion.php';
+	require_once "functions/functions.php";
+    $contact = select_to_where("sitio","id,descripcion,foto",array("id"=>1));
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -13,13 +16,16 @@ ini_set("display_errors", true);
 <body class="font-sans font-thin bg-gray-100">
     <?php include 'header.php'; ?>
     <div class="min-h-screen">
-        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(<?php echo $domain;?>images/contact.jpg)">
+        <?php foreach ($contact as $cont) { ?>
+        <section class="relative h-64 bg-repeat bg-center bg-cover" style="background-image: url(<?php echo $domain;?>images/<?php echo $cont['foto']; ?>)">
             <span class="text-center w-full uppercase absolute text-white text-4xl px-2" style="top: 7rem;text-shadow: 0px 0px 13px black;">Contáctanos</span>
         </section>
+        <?php } ?>
         <div class="container mx-auto py-8 px-2">
             <section>
-                <h2 class="uppercase mb-4 text-lg"><strong>Queremos Conocerte</strong></h2>
-                <span class="flex mb-8 text-grupo-gray">Si deseas más información sobre nuestros productos, por favor llena el siguiente formulario y con gusto nos comunicamos contigo.</span>
+                <?php foreach ($contact as $cont) { ?>
+                    <?php echo $cont['descripcion']; ?>
+                <?php } ?>
                 <div class="flex flex-col-reverse md:flex-row">
                     <div class="w-full md:w-1/2 md:pr-4">
                         <form id="envio" method="POST">

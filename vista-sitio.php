@@ -14,7 +14,7 @@
 	require_once 'conexion.php';
 	require_once "functions/functions.php";
 	$redes = select_to("redes","id,icon,name,link");
-  $contact = select_to_where("sitio","id,descripcion",array("id"=>1));
+  $contact = select_to_where("sitio","id,descripcion,foto",array("id"=>1));
   $conRedes = count($redes);   
 ?>
 <!DOCTYPE HTML>
@@ -28,12 +28,12 @@
 	<div class="container mx-auto py-8 px-2">
     <section class="mb-8">
       <h2 class="text-2xl font-normal">Redes Sociales</h2>
-      <form class="siteChanges" id="multiformsocial" enctype="multipart/form-data" method="POST">
-        <input type="hidden" name="opcion" value="opsocial">
+      <form class="siteChanges" name="social" id="multiformSocial" enctype="multipart/form-data" method="POST">
         <div class="p-2 flex flex-col md:flex-row">
           <?php 
             $contadorSocial = 0;
-            foreach ($redes as $social) { ?>
+          ?>
+          <?php foreach ($redes as $social) { ?>
             <div class="w-full md:w-1/4<?php if(++$contadorSocial != $conRedes) {?> md:pr-2<?php } ?> flex items-center">  
               <input type="hidden" name="id-<?php echo $social['name']; ?>" value="<?php echo $social['id']; ?>">
               <i class="fab fa-<?php echo $social["icon"]; ?> fa-lg hover:text-red-600 mr-1"></i>
@@ -93,14 +93,19 @@
     -->
     <section class="mb-8">
       <h2 class="text-2xl font-normal">Contacto</h2>
-      <form class="siteChanges" id="multiformsocial" enctype="multipart/form-data" method="POST">
+      <form class="siteChanges" name="site" id="multiformContact" enctype="multipart/form-data" method="POST">
+        <?php foreach ($contact as $cont) { ?>
         <input type="hidden" name="opcion" value="opcontact">
-        banner
-        <div id="editorcontacto">
-          <?php foreach ($contact as $cont) { ?>
-            <?php echo $cont['descripcion']; ?>
-          <?php } ?>
+        <input type="hidden" name="id" value="<?php echo $cont['id']; ?>">
+        <input type="hidden" name="imagen" value="<?php echo $cont['foto']; ?>">
+        <div class="relative">
+          <input type="file" class="py-1 px-2 w-full border rounded" name="image" id="image"/>
+          <label for="image" class="absolute bg-white left-0 label_file"><?php echo $cont['foto']; ?></label>
         </div>
+        <textarea name="editorcontacto" autocomplete="off">
+          <?php echo $cont['descripcion']; ?>
+        </textarea>
+        <?php } ?>
         <div class="p-2 flex flex-auto items-center justify-center md:justify-end">		
           <div class="relative text-grupo-red">
             <i class="absolute fa fa-check top-2 left-2"></i>
@@ -133,16 +138,22 @@
 				exit();
 			});
 
+      $(".siteChanges #image").on("click", function() {
+        $(this).next().hide();
+			});
+
 			$(".siteChanges").on("click", ".button.save", function() {
 				var button = $(this);
 				var form = $(this).closest("form");
+        var action = form.attr("name");
+        var opcion = form.attr("id");
         $(form).submit(function(e)
 				{
           var formData = new FormData(this);
           $.ajax(
 					{
 						type: 'POST',
-						url: "updatesite.php",
+            url: "updatesite.php?action="+action,
 						data:  formData,
 						mimeType:"multipart/form-data",
 						contentType: false,
@@ -159,8 +170,8 @@
 						},
             success: function(data, textStatus, jqXHR)
 						{
-							$(form).load("reloader.php?action=showSocial");
-							// console.log(data);
+							$(form).load("reloader.php?action="+action+opcion);
+							console.log(data);
 							// console.log(textStatus);
 							// console.log(jqXHR);
 						}
