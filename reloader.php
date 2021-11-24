@@ -12,9 +12,9 @@
       <input type="hidden" name="opcion" value="opcontact">
       <input type="hidden" name="id" value="<?php echo $cont['id']; ?>">
       <input type="hidden" name="imagen" value="<?php echo $cont['foto']; ?>">
-      <div class="relative">
-        <input type="file" class="py-1 px-2 w-full border rounded" name="image" id="image"/>
-        <label for="image" class="absolute bg-white left-0 label_file"><?php echo $cont['foto']; ?></label>
+      <div class="relative text-white">
+        <input type="file" class="py-1 px-2 w-full border rounded image_site" name="image" id="imageCon"/>
+        <label for="imageCon" class="absolute bg-white left-0 label_file text-black"><?php echo $cont['foto']; ?></label>
       </div>
       <textarea name="editorcontacto" autocomplete="off">
         <?php echo $cont['descripcion']; ?>
@@ -34,6 +34,28 @@
         });
       });
     </script>
+  <?php } ?>
+  <?php if($_GET['action'] == 'sitemultiformProducts') { ?>
+    <?php
+      $product = select_to_where("sitio","id,foto",array("id"=>2));
+    ?>
+    <form class="siteChanges" name="site" id="multiformProducts" enctype="multipart/form-data" method="POST">
+      <?php foreach ($product as $prod) { ?>
+      <input type="hidden" name="opcion" value="opproduct">
+      <input type="hidden" name="id" value="<?php echo $prod['id']; ?>">
+      <input type="hidden" name="imagen" value="<?php echo $prod['foto']; ?>">
+      <div class="relative text-white">
+        <input type="file" class="py-1 px-2 w-full border rounded image_site" name="image" id="imageProd"/>
+        <label for="imageProd" class="absolute bg-white left-0 label_file text-black"><?php echo $prod['foto']; ?></label>
+      </div>
+      <?php } ?>
+      <div class="p-2 flex flex-auto items-center justify-center md:justify-end">		
+        <div class="relative text-grupo-red">
+          <i class="absolute fa fa-check top-2 left-2"></i>
+          <input type="submit" value="Guardar" class="button save cursor-pointer hover:text-white bg-white hover:bg-red-400 border border-grupo-red py-1 pr-2 pl-6 rounded">
+        </div>
+      </div>
+    </form>
   <?php } ?>
   <?php if($_GET['action'] == 'socialmultiformSocial') { ?>
     <?php
@@ -61,4 +83,10 @@
       </div>
     </form>
   <?php } ?>
+  <script type='text/javascript' language='javascript'>
+    $(".siteChanges .image_site").on("click", function() {
+      $(this).next().hide();
+      $(this).parent().removeClass("text-white");
+    });
+  </script>
 <?php } ?>

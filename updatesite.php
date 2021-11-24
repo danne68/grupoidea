@@ -26,10 +26,10 @@
 				$destino =	dirname(__FILE__).'/images/'.$Image_name;
 				$temp =	dirname(__FILE__).'/images/'.$picture;
 				break;
-			case "opcat":
+			case "opproduct":
 				$consulta = 2;
-				$destino =	dirname(__FILE__).'/images/categorias/'.$Image_name;
-				$temp =	dirname(__FILE__).'/images/categorias/'.$picture;
+				$destino =	dirname(__FILE__).'/images/'.$Image_name;
+				$temp =	dirname(__FILE__).'/images/'.$picture;
 				break;
 			case "opprom":
 				$consulta = 3;
@@ -50,7 +50,7 @@
 							}
 							if ($consulta == 2) {
 								$con = Db::connect();
-								$update = $con->query("UPDATE categoria SET categoria = '$category', slug = '$slug', descripcion = '$description',foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
+								$update = $con->query("UPDATE sitio SET foto = '$Image_name' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 							}
 							if ($consulta == 3) {
 								$con = Db::connect();
@@ -74,10 +74,6 @@
 			if ($consulta == 1) {
 				$con = Db::connect();
         $update = $con->query("UPDATE sitio SET descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
-			}
-			if ($consulta == 2) {
-				$con = Db::connect();
-				$update = $con->query("UPDATE categoria SET categoria = '$category', slug = '$slug', descripcion = '$description' WHERE id = '$id'") or die ("No se puede ejecutar la consulta: ".mysqli_error($con));
 			}
 			if ($consulta == 3) {
 				$con = Db::connect();
